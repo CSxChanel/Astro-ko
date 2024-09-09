@@ -6,7 +6,10 @@ import {
 } from "../../../utils/api.js";
 
 const upcomingMovies = await getUpcoming();
-
+interface Movie {
+    id: number;
+    
+}
 
 ---
 <div class="mx-2 lg:container mb-11">
@@ -20,7 +23,7 @@ const upcomingMovies = await getUpcoming();
 					key={movie.id}
 					class="min-w-[155px] md:min-w-[170px] lg:min-w-[180px] flex flex-col"
 					>
-					<Card key={movie.id} type="movie" media={movie} />
+					<Card type="movie" media={movie} />
 				</div>
 			))
 		): (

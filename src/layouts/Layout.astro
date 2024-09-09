@@ -1,21 +1,26 @@
 ---
+import Navbar from "../components/Navbar.jsx"
+
 interface Props {
 	title: string;
 	description: string;
+	image?: string;
 }
 
 const {
+	movie,
 	title,
 	description,
-	movie
+	image = "../../public/cover.png"
 } = Astro.props;
 
-import Navbar from "../components/navbar/Navbar.jsx"
+
+
 const currentUrl = Astro.request.url;
-const ogImage = `https://image.tmdb.org/t/p/w500${movie}`; // Menggunakan gambar default jika movie.poster_path kosong
+
 ---
 
-<!doctype html>
+<!doctype html >
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
@@ -27,22 +32,29 @@ rel="stylesheet"
 />
 
 <meta name="generator" content={Astro.generator} />
-<title>{title ? `${title} | Cp_Sudrajat`: 'Cp_Sudrajat'}</title>
-<meta name="description" content={description || "Deskripsi tidak tersedia"} />
 
-<!-- Open Graph Meta Tags -->
-<meta property="og:url" content={currentUrl} />
+<!-- Primary Meta Tags -->
+<title>{title} | Cp_Sudrajat</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="Cp_Sudrajat" />
-<meta property="og:title" content={movie?.title || title} />
-<meta property="og:description" content={movie?.overview || description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={movie?.title || title} />
-<meta name="twitter:description" content={movie?.overview || description} />
-<meta name="twitter:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- css librerias/ cdn -->
+
 </head>
 <body>
 <Navbar client:load

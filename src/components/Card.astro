@@ -1,5 +1,13 @@
 ---
-
+interface Props {
+  title: string;
+  id: boolean;
+  type: string;
+  poster_path: string;
+  release_date: boolean;
+  vote_average: boolean;
+  image?: string;
+}
 const {
 	type,
 	media
@@ -12,7 +20,6 @@ const {
 <a href={`/${type}/${media.id}`} class="text-center">
 	<img
 	alt={media.title}
-	effect="blur"
 	src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
 	class="w-full h-[220px] md:h-[250px] lg:h-[300px] object-center object-cover rounded-2xl border-2 cursor-pointer shadow-lg"
 	/>

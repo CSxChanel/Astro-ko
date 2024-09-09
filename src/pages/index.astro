@@ -3,12 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import MovieUpComing from "../components/views/movies/MovieUpComing.astro"
 import MovieTrending from "../components/views/movies/MovieTrending.astro"
 import MoviePlayNow from "../components/views/movies/MoviePlayNow.astro"
-import {
-	motion
-} from "framer-motion";
-import {
-	fadeIn
-} from "../variants.js";
+
 
 const {
 	upcomingMovies,
@@ -24,7 +19,7 @@ const {
 			<h1 class="container text-slate-100 font-primary">Halaman Home</h1>
 		</div>
 		<MovieUpComing upcomingMovies={upcomingMovies} />
-		<MovieTrending trendingMovies={trendingMovies} />
 		<MoviePlayNow playNowMovie={playNowMovie} />
+		<MovieTrending trendingMovies={trendingMovies} />
 	</main>
 </Layout>

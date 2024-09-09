@@ -47,10 +47,10 @@ if (!mediaDetails) {
 {
 	mediaDetails ? (
 		<Layout
-			title={mediaDetails.title || 'Detail' }
-			description={mediaDetails.overview || 'No description available' }
-			movie={mediaDetails.backdrop_path }
-			>
+			title={mediaDetails.title || 'Detail'}
+  description={mediaDetails.overview || 'No description available'}
+  ogImage={mediaDetails.backdrop_path ? `https://image.tmdb.org/t/p/w500${mediaDetails.backdrop_path}` : '/default-image.jpg'}
+>
 			<main class="h-screen bg-lime-700">
 				<div class="relative">
 					{mediaDetails.backdrop_path ? (
@@ -82,58 +82,59 @@ if (!mediaDetails) {
 				</h1>
 				<div class="font-bold md:text-5xl flex">
 					Genres &nbsp;
-<ul class="list-disc list-inside">
-  {mediaDetails.genres && mediaDetails.genres.length > 0 ? (
-    mediaDetails.genres.map((genre) => (
-      <li key={genre.id}>{genre.name}</li>
-    ))
-  ) : (
-    <li>No genres available</li>
-  )}
-</ul>
+					<ul class="list-disc list-inside">
+						{mediaDetails.genres && mediaDetails.genres.length > 0 ? (
+							mediaDetails.genres.map((genre) => (
+								<li key={genre.id }>{genre.name
+									}</li>
+							))
+						): (
+							<li>No genres available</li>
+						)}
+					</ul>
 
-						</div>
-					</div>
 				</div>
+			</div>
+		</div>
 
-				<div class="container">
-					<p class="font-bold md:text-2xl my-2">
-						Release Date:
-						<span class="bg-slate-700 px-2 rounded-xl">
-							{mediaDetails.release_date || 'Unknown'
-							}
-						</span>
-					</p>
-
-					<p class="font-bold md:text-2xl my-2">
-						Status:
-						<span class="bg-slate-700 px-2 rounded-xl">
-							{mediaDetails.status || 'Unknown'
-							}
-						</span>
-					</p>
-					<p class="font-bold md:text-2xl my-2">
-						Production Countries:
-						<span class="bg-slate-700 px-2 rounded-xl">
-							{mediaDetails.production_countries
-							? mediaDetails.production_countries.map(country => country.name).join(", "): 'Unknown'
-							}
-						</span>
-					</p>
-					<p class="mb-2 font-bold md:text-2xl">
-						Overview:
-						<span class="bg-slate-700 px-2 rounded-xl text-sm md:text-xl">
-							{mediaDetails.overview || 'No overview available'
-							}
-						</span>
-					</p>
-				</div>
-			</main>
-		</Layout>
-	): Array.from({
-			length: 10
-		}).map((_,) => (
-			<p>
-				Loaddoongg,,,,
+		<div class="container">
+			<p class="font-bold md:text-2xl my-2">
+				Release Date:
+				<span class="bg-slate-700 px-2 rounded-xl">
+					{mediaDetails.release_date || 'Unknown'
+					}
+				</span>
 			</p>
-		))}
+
+			<p class="font-bold md:text-2xl my-2">
+				Status:
+				<span class="bg-slate-700 px-2 rounded-xl">
+					{mediaDetails.status || 'Unknown'
+					}
+				</span>
+			</p>
+			<p class="font-bold md:text-2xl my-2">
+				Production Countries:
+				<span class="bg-slate-700 px-2 rounded-xl">
+					{mediaDetails.production_countries
+					? mediaDetails.production_countries.map(country => country.name).join(", "): 'Unknown'
+					}
+				</span>
+			</p>
+			<p class="mb-2 font-bold md:text-2xl">
+				Overview:
+				<span class="bg-slate-700 px-2 rounded-xl text-sm md:text-xl">
+					{mediaDetails.overview || 'No overview available'
+					}
+				</span>
+			</p>
+		</div>
+	</main>
+</Layout>
+): Array.from({
+	length: 10
+}).map((_,) => (
+	<p>
+		Loaddoongg,,,,
+	</p>
+))}

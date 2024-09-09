@@ -16,8 +16,12 @@ const {
 	title,
 	ogImage,
 	description,
-	image = "../../public/cover.png"
+	image = "../../public/cover.jpg"
 } = Astro.props;
+
+const entUrl = Astro.url;
+const fullImageUrl = ogImage ? new URL(ogImage, entUrl): image;
+
 
 
 
@@ -48,10 +52,8 @@ rel="stylesheet"
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<!-- Mengatur gambar og:image dengan backdrop_path -->
-<!-- og:image dinamis -->
-<meta property="og:image" content={ogImage} />
-<meta property="og:image:alt" content={title} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:image:alt" content={title } />
 </head>
 
 
@@ -61,7 +63,8 @@ rel="stylesheet"
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImage} />
+<meta property="twitter:image" content={fullImageUrl} />
+<meta property="twitter:image:alt" content={title} />
 
 <!-- css librerias/ cdn -->
 

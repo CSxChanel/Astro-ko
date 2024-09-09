@@ -48,9 +48,9 @@ if (!mediaDetails) {
 	mediaDetails ? (
 		<Layout
 			title={mediaDetails.title || 'Detail'}
-  description={mediaDetails.overview || 'No description available'}
-  ogImage={mediaDetails.backdrop_path ? `https://image.tmdb.org/t/p/w500${mediaDetails.backdrop_path}` : '/default-image.jpg'}
->
+			description={mediaDetails.overview || 'No description available'}
+			ogImage={mediaDetails.backdrop_path ? `https://image.tmdb.org/t/p/w500${mediaDetails.backdrop_path}`: '/default-image.jpg'}
+			>
 			<main class="h-screen bg-lime-700">
 				<div class="relative">
 					{mediaDetails.backdrop_path ? (
